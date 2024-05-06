@@ -1,5 +1,6 @@
 // components/BotSpecs.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function BotSpecs({ bot, goBackToList, enlistBot }) {
   return (
@@ -11,8 +12,9 @@ function BotSpecs({ bot, goBackToList, enlistBot }) {
         <p>Health: {bot.health}</p>
         <p>Damage: {bot.damage}</p>
         <p>Armor: {bot.armor}</p>
-        <button onClick={goBackToList}>Go Back</button>
-        {!bot.enlisted && <button onClick={() => enlistBot(bot)}>Enlist</button>}
+        <Link to = "/">
+        <button onClick={goBackToList}>Go Back</button></Link>
+        
       </div>
     </div>
   );

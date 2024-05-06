@@ -8,17 +8,19 @@ function YourBotArmy({ enlistedBots, releaseBot, dischargeBot }) {
       <h2>Your Bot Army</h2>
       <div className={styles['bot-army']}>
         {enlistedBots.map((bot) => (
-          <div key={bot.id} className={styles['bot-card']}>
-            <img src={bot.avatar_url} alt={bot.name} />
-            <h3>{bot.name}</h3>
-            <p>Health: {bot.health}</p>
-            <p>Damage: {bot.damage}</p>
-            <p>Armor: {bot.armor}</p>
-            {/* Add a "Release" button to release the bot */}
-            <button onClick={() => releaseBot(bot)}>Release</button>
-            {/* Add a "Discharge" button to discharge the bot */}
-            <button onClick={() => dischargeBot(bot)}>Discharge</button>
+          <div key={bot.id} className="card" style={{width: "18rem"}}>
+          <img className="card-img-top" src={bot.avatar_url} alt="Card image cap"/>
+          <div className="card-body">
+            <h5 className="card-title">{bot.name}</h5>
+            <p className="card-text">{bot.catchphrase}</p>
+            <p className="card-text">health: {bot.health} </p>
+            <p className="card-text"> damage: {bot.damage} </p>
+            <p className="card-text"> armor: {bot.armor}</p>
+            <button className="btn btn-secondary me-2" onClick={() => releaseBot(bot.id)}>release</button> 
+            <button className="btn btn-danger" onClick={() => dischargeBot(bot.id)}>discharge</button> 
           </div>
+          </div>
+        
         ))}
       </div>
     </div>

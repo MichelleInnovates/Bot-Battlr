@@ -1,5 +1,6 @@
 // App.js
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BotCollection from './components/BotCollection';
 import YourBotArmy from './components/YourBotArmy';
 import BotSpecs from './components/BotSpecs';
@@ -57,6 +58,7 @@ function App() {
   };
 
   const goBackToList = () => setSelectedBot(null);
+      {/* Show BotSpecs when a bot is selected */}
 
   const handleFilter = (event) => {
     const { value } = event.target;
@@ -86,34 +88,26 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <h1>Welcome to Bot Battlr</h1>
-      {/* Show BotSpecs when a bot is selected */}
-      {selectedBot ? (
-        <BotSpecs bot={selectedBot} goBackToList={goBackToList} enlistBot={enlistBot} />
-      ) : (
-        <>
-          {/* Render SortBar */}
-          <SortBar sortBots={setSortBy} />
-
-          {/* Render FilterBar */}
-          <FilterBar botClasses={botClasses} handleFilter={handleFilter} />
-
-          {/* Render YourBotArmy */}
-          <YourBotArmy
-            enlistedBots={enlistedBots}
-            releaseBot={releaseBot}
-            dischargeBot={dischargeBot}
-          />
-
-          {/* Render BotCollection */}
-          <BotCollection
-            bots={sortedBots}
-            enlistBot={enlistBot}
-            setSelectedBot={setSelectedBot}
-          />
-        </>
-      )}
-    </div>
+      <Routes>
+    <Route
+      path="/"
+      element={<> <YourBotArmy
+        enlistedBots={enlistedBots}
+        releaseBot={releaseBot}
+        dischargeBot={dischargeBot}
+      />
+<SortBar sortBots={setSortBy} />
+      <FilterBar botClasses={botClasses} handleFilter={handleFilter} />
+<BotCollection  
+        bots={sortedBots}
+        enlistBot={enlistBot}
+        setSelectedBot={setSelectedBot}   /></>}
+    />
+    <Route
+    
+      path="/bots/:id" element={<BotSpecs bot={selectedBot} goBackToList={goBackToList} />}/>
+  </Routes>
+         </div>
   );
 }
 
