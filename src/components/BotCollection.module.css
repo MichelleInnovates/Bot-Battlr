@@ -1,0 +1,15 @@
+/* components/BotCollection.module.css */
+.bot-collection {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four bots per row */
+    gap: 20px; /* Gap between cards */
+  }
+  
+  .bot-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    max-width: 200px;
+  }
+  

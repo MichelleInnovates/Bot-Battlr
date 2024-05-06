@@ -1,41 +1,26 @@
-import React from "react";
-import BotCard from "./BotCard";
+// components/BotCollection.js
+import React from 'react';
+import styles from './BotCollection.module.css';
 
-function BotCollection({ bots, handleClick, handleDelete }) {
-  // Your code here
-  const displayCards = bots.map((bot) => {
-    return (
-      <BotCard
-        key={bot.id}
-        bot={bot}
-        handleClick={handleClick}
-        handleDelete={handleDelete}
-      />
-    );
-  });
-
+function BotCollection({ bots, enlistBot }) {
   return (
-    <div className="ui four column grid">
-      <div className="row">
-        {displayCards}
+    <div>
+      <h2>Available Bots</h2>
+      <div className={styles['bot-collection']}>
+        {bots.map((bot) => (
+          <div key={bot.id} className={styles['bot-card']}>
+            <img src={bot.avatar_url} alt={bot.name} />
+            <h3>{bot.name}</h3>
+            <p>Health: {bot.health}</p>
+            <p>Damage: {bot.damage}</p>
+            <p>Armor: {bot.armor}</p>
+            {/* Add an "Enlist" button to enlist the bot */}
+            <button onClick={() => enlistBot(bot)}>Enlist</button>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
-
-BotCollection.propTypes = {
-  bots: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      health: PropTypes.number.isRequired,
-      damage: PropTypes.number.isRequired,
-      armor: PropTypes.number.isRequired,
-      isAdded: PropTypes.bool.isRequired,
-    })
-  ).isRequired,
-  handleClick: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired,
-};
 
 export default BotCollection;

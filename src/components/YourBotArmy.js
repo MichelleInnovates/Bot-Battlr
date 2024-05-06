@@ -1,45 +1,28 @@
-import React from "react";
-import BotCard from "./BotCard";
+// components/YourBotArmy.js
+import React from 'react';
+import styles from './YourBotArmy.module.css';
 
-function YourBotArmy({ bots, handleClick, handleDelete }) {
-  //your bot army code here...
-  const displayCards = bots.map((bot) => {
-    return (
-      <BotCard key={bot.id}
-        bot={bot}
-        handleClick={handleClick}
-        handleDelete={handleDelete}
-      />
-    );
-  });
-
+function YourBotArmy({ enlistedBots, releaseBot, dischargeBot }) {
   return (
-    <div className="ui segment inverted olive bot-army">
-      <div className="ui five column grid">
-        <div className="row bot-army-row">
-          <div className="column">
-            Your Bot Army
+    <div>
+      <h2>Your Bot Army</h2>
+      <div className={styles['bot-army']}>
+        {enlistedBots.map((bot) => (
+          <div key={bot.id} className={styles['bot-card']}>
+            <img src={bot.avatar_url} alt={bot.name} />
+            <h3>{bot.name}</h3>
+            <p>Health: {bot.health}</p>
+            <p>Damage: {bot.damage}</p>
+            <p>Armor: {bot.armor}</p>
+            {/* Add a "Release" button to release the bot */}
+            <button onClick={() => releaseBot(bot)}>Release</button>
+            {/* Add a "Discharge" button to discharge the bot */}
+            <button onClick={() => dischargeBot(bot)}>Discharge</button>
           </div>
-          {displayCards}
-        </div>
+        ))}
       </div>
     </div>
   );
 }
-
-YourBotArmy.propTypes = {
-  bots: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      health: PropTypes.number.isRequired,
-      damage: PropTypes.number.isRequired,
-      armor: PropTypes.number.isRequired,
-      isAdded: PropTypes.bool.isRequired,
-    })
-  ).isRequired,
-  handleClick: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired,
-};
 
 export default YourBotArmy;

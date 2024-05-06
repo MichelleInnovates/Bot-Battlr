@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { deleteBot } from "../../actions/bots";
@@ -84,4 +84,4 @@ BotCard.propTypes = {
   handleClick: PropTypes.func.isRequired,
 };
 
-export default BotCard;
+export default BotCard;*/

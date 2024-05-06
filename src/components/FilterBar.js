@@ -1,32 +1,18 @@
-import React, { useState } from 'react';
+// components/FilterBar.js
+import React from 'react';
 
-const FilterBar = ({ botClasses, onFilter }) => {
-    const [selectedFilters, setSelectedFilters] = useState([]);
-
-    const handleFilterChange = (botClass) => {
-        if (selectedFilters.includes(botClass)) {
-            setSelectedFilters(selectedFilters.filter(filter => filter !== botClass));
-        } else {
-            setSelectedFilters([...selectedFilters, botClass]);
-        }
-        onFilter(selectedFilters);
-    };
-
-    return (
-        <div>
-            <h3>Filter Bots</h3>
-            {botClasses.map(botClass => (
-                <div key={botClass}>
-                    <input
-                        type="checkbox"
-                        checked={selectedFilters.includes(botClass)}
-                        onChange={() => handleFilterChange(botClass)}
-                    />
-                    <label>{botClass}</label>
-                </div>
-            ))}
-        </div>
-    );
-};
+function FilterBar({ botClasses, handleFilter }) {
+  return (
+    <div>
+      <h3>Filter Bots By Class:</h3>
+      {botClasses.map((botClass) => (
+        <label key={botClass}>
+          <input type="checkbox" value={botClass} onChange={handleFilter} />
+          {botClass}
+        </label>
+      ))}
+    </div>
+  );
+}
 
 export default FilterBar;

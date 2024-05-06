@@ -1,48 +1,15 @@
-import React, { useState } from 'react';
+// components/SortBar.js
+import React from 'react';
 
-const SortBar = ({ onSort }) => {
-    const [sortBy, setSortBy] = useState('health');
-
-    const handleSortChange = (event) => {
-        setSortBy(event.target.value);
-        onSort(event.target.value);
-    };
-
-    return (
-        <div>
-            <h3>Sort Bots</h3>
-            <label>
-                <input
-                    type="radio"
-                    name="sortBy"
-                    value="health"
-                    checked={sortBy === 'health'}
-                    onChange={handleSortChange}
-                />
-                Health
-            </label>
-            <label>
-                <input
-                    type="radio"
-                    name="sortBy"
-                    value="damage"
-                    checked={sortBy === 'damage'}
-                    onChange={handleSortChange}
-                />
-                Damage
-            </label>
-            <label>
-                <input
-                    type="radio"
-                    name="sortBy"
-                    value="armor"
-                    checked={sortBy === 'armor'}
-                    onChange={handleSortChange}
-                />
-                Armor
-            </label>
-        </div>
-    );
-};
+function SortBar({ sortBots }) {
+  return (
+    <div>
+      <h3>Sort Bots By:</h3>
+      <button onClick={() => sortBots('health')}>Health</button>
+      <button onClick={() => sortBots('damage')}>Damage</button>
+      <button onClick={() => sortBots('armor')}>Armor</button>
+    </div>
+  );
+}
 
 export default SortBar;

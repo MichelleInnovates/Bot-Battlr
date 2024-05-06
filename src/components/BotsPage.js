@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+/*import React, { useEffect, useState, useCallback, useMemo } from "react";
 import PropTypes from "prop-types";
 import YourBotArmy from "./YourBotArmy";
 import BotCollection from "./BotCollection";
@@ -43,4 +43,4 @@ BotsPage.propTypes = {
   handleClick: PropTypes.func.isRequired,
 };
 
-export default BotsPage;
+export default BotsPage;*/
