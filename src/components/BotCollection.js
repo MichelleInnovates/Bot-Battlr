@@ -10,7 +10,7 @@ function BotCollection({ bots,setSelectedBot, enlistBot }) {
       <div className={styles['bot-collection']}>
         {bots.map((bot) => (
          <div className="card" onClick={() => setSelectedBot(bot)} style={{width: "18rem"}}>
-         <Link to={`/bots/${bot.id}`}><img className="card-img-top" src={bot.avatar_url} alt="Card image cap"/></Link>
+         <Link to={`/Bot-Battlr/bots/${bot.id}`}><img className="card-img-top" src={bot.avatar_url} alt="Card image cap"/></Link>
         
          <div className="card-body">
            <h5 className="card-title">{bot.name}</h5>

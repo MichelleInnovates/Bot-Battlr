@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     // Fetch bot data from the server
-    fetch('https://api.npoint.io/9cb020dad156662e04c5/bots/')
+    fetch('https://json-bot-server-anl5.onrender.com/bots')
       .then((response) => response.json())
       .then((data) => setBots(data))
       .catch((error) => console.error('Error fetching data:', error));
@@ -47,7 +47,7 @@ function App() {
   };
 
   const dischargeBot = (botId) => {
-    fetch(`http://localhost:3000/bots/${botId}`, { method: 'DELETE' }).then(() => {
+    fetch(`https://json-bot-server-anl5.onrender.com/bots/${botId}`, { method: 'DELETE' }).then(() => {
       setEnlistedBots((prevEnlistedBots) =>
         prevEnlistedBots.filter((bot) => bot.id !== botId)
       );
@@ -90,7 +90,7 @@ function App() {
     <div className={styles.App}>
       <Routes>
     <Route
-      path="/"
+      path="//Bot-Battlr/"
       element={<> <YourBotArmy
         enlistedBots={enlistedBots}
         releaseBot={releaseBot}
@@ -105,7 +105,7 @@ function App() {
     />
     <Route
     
-      path="/bots/:id" element={<BotSpecs bot={selectedBot} goBackToList={goBackToList} />}/>
+      path="/Bot-Battlr/bots/:id" element={<BotSpecs bot={selectedBot} goBackToList={goBackToList} />}/>
   </Routes>
          </div>
   );

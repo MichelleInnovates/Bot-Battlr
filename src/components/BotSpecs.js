@@ -12,7 +12,7 @@ function BotSpecs({ bot, goBackToList, enlistBot }) {
         <p>Health: {bot.health}</p>
         <p>Damage: {bot.damage}</p>
         <p>Armor: {bot.armor}</p>
-        <Link to = "/">
+        <Link to = "/Bot-Battlr/">
         <button onClick={goBackToList}>Go Back</button></Link>
         
       </div>
